@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.BookingHistoryController">
+    <children>
+        <ToolBar layoutX="-1.0" layoutY="44.0" prefHeight="40.0" prefWidth="800.0">
+            <items>
+                <Button mnemonicParsing="false" onMouseClicked="#profileOnMouseClicked" text="Profile" />
+                <Button mnemonicParsing="false" onMouseClicked="#bookARoomMouseClicked" text="Book a Room" />
+                <Button mnemonicParsing="false" onMouseClicked="#manageBookingOnMouseClicked" text="Manage Booking" />
+                <Button fx:id="bookingHistoryButton" mnemonicParsing="false" text="Booking History" />
+            </items>
+            <stylesheets>
+                <URL value="@../resources/style.css" />
+            </stylesheets>
+        </ToolBar>
+        <ImageView id="exitButton" fx:id="logOutButton" fitHeight="29.75" fitWidth="34.0" layoutX="752.0" layoutY="9.0" onMouseClicked="#logOutMouseClicked" opacity="0.75" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <effect>
+                <DropShadow color="WHITE" spread="0.5" />
+            </effect>
+            <image>
+                <Image preserveRatio="false" smooth="false" url="@../resources/logout.png" />
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" graphicTextGap="5.0" layoutX="21.0" layoutY="14.0" text="U s e r   C o n t r o l  P a n e l" underline="true">
+            <effect>
+                <DropShadow color="#51aa00" spread="0.7" />
+            </effect>
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="userLoggedInDetailsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="320.0" layoutY="16.0" mouseTransparent="true" prefWidth="415.0" textAlignment="RIGHT">
+            <font>
+                <Font name="Verdana" size="14.0" />
+            </font>
+        </Label>
+        <Label id="statusLabel" fx:id="statusLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="543.0" prefHeight="52.0" prefWidth="617.0" textAlignment="CENTER" textFill="$x2" textOverrun="CLIP" wrapText="true">
+            <effect>
+                <DropShadow color="WHITE" spread="0.9" />
+            </effect>
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Label>
+    </children>
+    <stylesheets>
+        <URL value="@../resources/style.css" />
+    </stylesheets>
+</AnchorPane>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.AdminHeaderController">
+    <children>
+        <ImageView id="exitButton" fx:id="logOutButton" fitHeight="29.75" fitWidth="34.0" layoutX="752.0" layoutY="9.0" onMouseClicked="#logOutMouseClicked" opacity="0.75" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <effect>
+                <DropShadow color="WHITE" spread="0.5" />
+            </effect>
+            <image>
+                <Image preserveRatio="false" smooth="false" url="@../resources/logout.png" />
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" graphicTextGap="5.0" layoutX="21.0" layoutY="14.0" text="A d m i n  M a n a g e m e n t" underline="true">
+            <effect>
+                <DropShadow color="#51aa00" spread="0.7" />
+            </effect>
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Label>
+        <TabPane id="tabPane" layoutX="14.0" layoutY="41.0" prefHeight="481.0" prefWidth="772.0" tabClosingPolicy="UNAVAILABLE">
+            <stylesheets>
+                <URL value="@../resources/style.css" />
+            </stylesheets>
+            <tabs>
+                <Tab closable="false" onSelectionChanged="#profileTabSelectionChanged" text="Profile">
+                    <content>
+                        <AnchorPane fx:id="profileAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="786.0">
+                            
+                        </AnchorPane>
+                    </content>
+                    
+                </Tab>
+                <Tab closable="false" onSelectionChanged="#registrationTabSelectionChanged" text="Registration">
+                    <content>
+                        <AnchorPane fx:id="registrationAnchorPane" minHeight="0.0" minWidth="0.0" prefHeight="521.0" prefWidth="786.0">
+                            
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <Label fx:id="messageLabel" layoutX="190.0" layoutY="183.0" prefHeight="82.0" prefWidth="330.0" textFill="WHITE">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </Label>
+    </children>
+    <stylesheets>
+        <URL value="@../resources/style.css" />
+    </stylesheets> 
+</AnchorPane>

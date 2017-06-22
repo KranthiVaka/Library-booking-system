@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.UserManagementController">
+    <children>
+        <ToolBar layoutX="-1.0" layoutY="44.0" prefHeight="40.0" prefWidth="800.0">
+            <items>
+                <Button mnemonicParsing="false" onMouseClicked="#profileOnMouseClicked" text="Profile" />
+                <Button fx:id="userButton" mnemonicParsing="false" text="User Management" />
+                <Button mnemonicParsing="false" onMouseClicked="#roomManagementOnMouseClicked" text="Room Management" />
+                <Button mnemonicParsing="false" onMouseClicked="#bookingManagementOnMouseClicked" text="Booking Management" />
+            </items>
+            <stylesheets>
+                <URL value="@../resources/style.css" />
+            </stylesheets>
+        </ToolBar>
+        <ImageView id="exitButton" fx:id="logOutButton" fitHeight="29.75" fitWidth="34.0" layoutX="752.0" layoutY="9.0" onMouseClicked="#logOutMouseClicked" opacity="0.75" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <effect>
+                <DropShadow color="WHITE" spread="0.5" />
+            </effect>
+            <image>
+                <Image preserveRatio="false" smooth="false" url="@../resources/logout.png" />
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" graphicTextGap="5.0" layoutX="21.0" layoutY="14.0" text="A d m i n  M a n a g e m e n t" underline="true">
+            <effect>
+                <DropShadow color="#51aa00" spread="0.7" />
+            </effect>
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="userLoggedInDetailsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="320.0" layoutY="16.0" mouseTransparent="true" prefWidth="415.0" textAlignment="RIGHT">
+            <font>
+                <Font name="Verdana" size="14.0" />
+            </font>
+        </Label>
+        <Label id="statusLabel" fx:id="statusLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="543.0" prefHeight="52.0" prefWidth="617.0" textAlignment="CENTER" textFill="$x2" textOverrun="CLIP" wrapText="true">
+            <effect>
+                <DropShadow color="WHITE" spread="0.9" />
+            </effect>
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Label>
+        <TabPane layoutX="-1.0" layoutY="84.0" prefHeight="451.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab onSelectionChanged="#registrationSelectionChanged" text="New User Registration">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TextField id="userName" fx:id="userIDTextField" layoutX="250.0" layoutY="14.0" onKeyReleased="#userIDKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="300.0" promptText="User ID (min 5 characters &amp; max 10 characters)">
+                                    <effect>
+                                        <DropShadow spread="0.7">
+                                            <color>
+                                                <Color blue="0.000" green="0.000" red="0.800" fx:id="x2" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </TextField>
+                                <TextField id="name" fx:id="firstNameTextField" layoutX="251.0" layoutY="70.0" onKeyReleased="#firstNameKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="300.0" promptText="First Name">
+                                    <effect>
+                                        <DropShadow spread="0.7">
+                                            <color>
+                                                <Color blue="0.000" green="0.667" red="0.318" fx:id="x3" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                </TextField>
+                                <TextField id="lastName" fx:id="lastNameTextField" layoutX="250.0" layoutY="130.0" onKeyReleased="#lastNameKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="300.0" promptText="Last Name">
+                                    <effect>
+                                        <DropShadow color="$x3" spread="0.7" />
+                                    </effect>
+                                </TextField>
+                                <TextField id="altEmail" fx:id="emailTextField" layoutX="250.0" layoutY="188.0" onKeyReleased="#emailKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="300.0" promptText="Email">
+                                    <effect>
+                                        <DropShadow color="$x2" spread="0.7" />
+                                    </effect>
+                                </TextField>
+                                <TextField fx:id="mobileTextField" layoutX="250.0" layoutY="248.0" onKeyReleased="#mobileKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="300.0" promptText="Mobile">
+                                    <effect>
+                                        <DropShadow color="$x3" spread="0.7" />
+                                    </effect>
+                                </TextField>
+                                <Button fx:id="registerButton" blendMode="SRC_ATOP" contentDisplay="CENTER" layoutX="250.0" layoutY="371.0" mnemonicParsing="false" onKeyPressed="#registerEnterPressed" onMouseClicked="#registerMouseClicked" opacity="0.75" prefHeight="44.0" prefWidth="300.0" text="R E G I S T E R" textAlignment="CENTER" underline="true" wrapText="true">
+                                    <effect>
+                                        <DropShadow color="$x3" spread="0.7" />
+                                    </effect>
+                                    <font>
+                                        <Font name="System Bold" size="20.0" fx:id="x4" />
+                                    </font>
+                                </Button>
+                                <RadioButton fx:id="userRadioButton" layoutX="254.0" layoutY="315.0" mnemonicParsing="false" selected="true" text="User">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="UserRole" />
+                                    </toggleGroup>
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </RadioButton>
+                                <RadioButton fx:id="systemAdminRadioButton" layoutX="408.0" layoutY="315.0" mnemonicParsing="false" text="System Admin" toggleGroup="$UserRole">
+
+                                    <font>
+                                        <Font name="System Bold" size="16.0" />
+                                    </font>
+                                </RadioButton>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab onSelectionChanged="#managementSelectionChanged" text="User Management">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="userTableView" layoutX="3.0" opacity="0.93" prefHeight="392.0">
+                                    <columns>
+                                        <TableColumn fx:id="userIDTableColumn" maxWidth="200.0" minWidth="120.0" prefWidth="124.0" text="USERNAME" />
+                              <TableColumn fx:id="nameTableColumn" maxWidth="222.0" minWidth="157.0" prefWidth="209.0" text="NAME" />
+                                        <TableColumn fx:id="emailTableColumn" maxWidth="420.0" minWidth="145.0" prefWidth="240.0" text="E-mail" />
+                                        <TableColumn fx:id="blockedStatusTableColumn" minWidth="55.0" prefWidth="119.0" text="Blocked status" />
+                                        <TableColumn fx:id="roleTableColumn" maxWidth="327.0" minWidth="50.0" prefWidth="98.0" resizable="false" text="Role" />
+                                    </columns>
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem fx:id="refreshMenuItem" mnemonicParsing="false" onAction="#refreshMenueItemOnAction" text="Load / Refresh" />
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </TableView>
+                                <ComboBox fx:id="actionComboButton" editable="true" layoutX="250.0" layoutY="396.0" prefHeight="21.0" prefWidth="150.0" promptText="Choose action..." visibleRowCount="4">
+                                    <items>
+                                        <FXCollections fx:factory="observableArrayList">
+                                            <String fx:value="Block user" />
+                                            <String fx:value="Unblock user" />
+                                            <String fx:value="Reset password" />
+                                        </FXCollections>
+                                    </items>
+                                </ComboBox>
+                                <Button fx:id="submitActionButton" layoutX="469.0" layoutY="396.0" mnemonicParsing="false" onKeyPressed="#submitActionKeyPressed" onMouseClicked="#submitActionMouseClicked" prefWidth="325.9999000000025" text="Submit action" />
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+    <stylesheets>
+        <URL value="@../resources/style.css" />
+    </stylesheets>
+</AnchorPane>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<!--<?import user.*?>
+TESTING CUSTOM COMBOBOX -->
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="user.BookARoomController">
+    <children>
+        <ToolBar layoutX="-1.0" layoutY="44.0" prefHeight="40.0" prefWidth="800.0">
+            <items>
+                <Button mnemonicParsing="false" onMouseClicked="#profileOnMouseClicked" text="Profile" />
+                <Button fx:id="bookARoomButton" mnemonicParsing="false" text="Book a Room" />
+                <Button mnemonicParsing="false" onMouseClicked="#manageBookingOnMouseClicked" text="Manage Booking" />
+                <Button mnemonicParsing="false" onMouseClicked="#bookingHistoryOnMouseClicked" text="Booking History" />
+            </items>
+            <stylesheets>
+                <URL value="@../resources/style.css" />
+            </stylesheets>
+        </ToolBar>
+        <ImageView id="exitButton" fx:id="logOutButton" fitHeight="29.75" fitWidth="34.0" layoutX="752.0" layoutY="9.0" onMouseClicked="#logOutMouseClicked" opacity="0.75" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <effect>
+                <DropShadow color="WHITE" spread="0.5" />
+            </effect>
+            <image>
+                <Image preserveRatio="false" smooth="false" url="@../resources/logout.png" />
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" graphicTextGap="5.0" layoutX="21.0" layoutY="14.0" text="U s e r   C o n t r o l  P a n e l" underline="true">
+            <effect>
+                <DropShadow color="#51aa00" spread="0.7" />
+            </effect>
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="userLoggedInDetailsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="320.0" layoutY="16.0" mouseTransparent="true" prefWidth="415.0" textAlignment="RIGHT">
+            <font>
+                <Font name="Verdana" size="14.0" />
+            </font>
+        </Label>
+        <Label id="statusLabel" fx:id="statusLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="543.0" prefHeight="52.0" prefWidth="617.0" textAlignment="CENTER" textFill="$x2" textOverrun="CLIP" wrapText="true">
+            <effect>
+                <DropShadow color="WHITE" spread="0.9" />
+            </effect>
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Label>
+        <TabPane fx:id="bookARoomTabPane" layoutX="-1.0" layoutY="84.0" prefHeight="451.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="Search A Room">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button blendMode="SRC_ATOP" contentDisplay="CENTER" layoutX="250.0" layoutY="371.0" mnemonicParsing="false" onKeyPressed="#searchButtonEnterPressed" onMouseClicked="#searchButtonMouseClicked" opacity="0.75" prefHeight="44.0" prefWidth="300.0" text="S E A R C H     R O O M" textAlignment="CENTER" underline="true" wrapText="true">
+                                    <effect>
+                                        <DropShadow spread="0.7">
+                                            <color>
+                                                <Color blue="0.000" green="0.667" red="0.318" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                    <font>
+                                        <Font name="System Bold" size="20.0" fx:id="x4" />
+                                    </font>
+                                </Button>
+                                <VBox layoutX="191.0" layoutY="125.0" prefHeight="209.0" prefWidth="433.0">
+                                    <children>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Number of seats:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets top="20.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <TextField id="altEmail" fx:id="sitsTextField" onKeyReleased="#sitsKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="226.0" promptText="Minimum required seat(s)">
+                                                    <effect>
+                                                        <DropShadow spread="0.7">
+                                                            <color>
+                                                                <Color blue="0.000" green="0.000" red="0.800" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                    <HBox.margin>
+                                                        <Insets left="55.0" top="15.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Board:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets top="15.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="boardCheckBox" mnemonicParsing="false" onMouseReleased="#boardCheckBoxMouseReleased">
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" top="10.0" />
+                                                    </HBox.margin>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                </CheckBox>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="TV:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="45.0" top="15.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="tvCheckBox" mnemonicParsing="false" onMouseReleased="#tvCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" top="10.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Projector:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="45.0" top="15.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="projectorCheckBox" mnemonicParsing="false" onMouseReleased="#projectorCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" top="10.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <Label alignment="CENTER" graphicTextGap="5.0" layoutX="145.0" layoutY="57.0" text="Please enter room features and click on SEARCH ROOM button" underline="true">
+                                    <effect>
+                                        <DropShadow color="#fff600" spread="0.7" />
+                                    </effect>
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="bookARoomTab" disable="true" onClosed="#bookARoomOnClose" onSelectionChanged="#bookARoomOnSelectionChanged" text="Book A Room">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button blendMode="SRC_ATOP" contentDisplay="CENTER" layoutX="250.0" layoutY="371.0" mnemonicParsing="false" onKeyPressed="#bookButtonEnterPressed" onMouseClicked="#bookButtonMouseClicked" opacity="0.75" prefHeight="44.0" prefWidth="300.0" text="B O O K     R O O M" textAlignment="CENTER" underline="true" wrapText="true">
+                                    <effect>
+                                        <DropShadow spread="0.7">
+                                            <color>
+                                                <Color blue="0.000" green="0.667" red="0.318" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                    <font>
+                                        <Font name="System Bold" size="20.0" />
+                                    </font>
+                                </Button>
+                                <Label alignment="CENTER" graphicTextGap="5.0" layoutX="87.0" layoutY="71.0" text="Choose a date , select a room and check available start time and end time in room" underline="true">
+                                    <effect>
+                                        <DropShadow color="#fff600" spread="0.7" />
+                                    </effect>
+                                    <font>
+                                        <Font name="Times New Roman Bold" size="18.0" />
+                                    </font>
+                                </Label>
+                        <VBox layoutX="86.0" layoutY="153.0" prefHeight="63.0" prefWidth="632.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Label alignment="CENTER" graphicTextGap="5.0" text="Choose a date" underline="true">
+                                       <effect>
+                                          <DropShadow color="#51aa00" spread="0.7" />
+                                       </effect>
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER" graphicTextGap="5.0" layoutX="10.0" layoutY="10.0" text="Choose a room" underline="true">
+                                       <effect>
+                                          <DropShadow color="#51aa00" spread="0.7" />
+                                       </effect>
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" graphicTextGap="5.0" layoutX="117.0" layoutY="10.0" text="Select Start Time" underline="true">
+                                       <effect>
+                                          <DropShadow color="#51aa00" spread="0.7" />
+                                       </effect>
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Label alignment="CENTER" graphicTextGap="5.0" layoutX="232.0" layoutY="10.0" text="Select End Time" underline="true">
+                                       <effect>
+                                          <DropShadow color="#51aa00" spread="0.7" />
+                                       </effect>
+                                       <font>
+                                          <Font name="Times New Roman Bold" size="18.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <DatePicker fx:id="chooseDateDatePicker" onAction="#chooseDateOnAction" prefHeight="25.0" prefWidth="110.0">
+                                       <effect>
+                                          <DropShadow color="#48ff3b" />
+                                       </effect>
+                                    </DatePicker>
+                                    <ComboBox fx:id="chooseRoomComboBox" onAction="#chooseRoomComboBoxOnAction" prefHeight="25.0" prefWidth="126.0" promptText="Choose a room">
+                                       <HBox.margin>
+                                          <Insets left="40.0" />
+                                       </HBox.margin>
+                                       <effect>
+                                          <DropShadow color="#48ff3b" />
+                                       </effect>
+                                    </ComboBox>
+                                    <ComboBox fx:id="startTimeComboBox" onAction="#startTimeComboBoxOnAction" prefHeight="25.0" prefWidth="94.0" promptText="Start time">
+                                       <HBox.margin>
+                                          <Insets left="50.0" />
+                                       </HBox.margin>
+                                       <effect>
+                                          <DropShadow color="#48ff3b" />
+                                       </effect>
+                                    </ComboBox>
+                                    <ComboBox fx:id="endTimeComboBox" layoutX="240.0" layoutY="10.0" onAction="#endTimeComboBoxOnAction" prefHeight="25.0" prefWidth="94.0" promptText="End time">
+                                       <HBox.margin>
+                                          <Insets left="90.0" />
+                                       </HBox.margin>
+                                       <effect>
+                                          <DropShadow color="#48ff3b" />
+                                       </effect>
+                                    </ComboBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+    <stylesheets>
+        <URL value="@../resources/style.css" />
+    </stylesheets>
+</AnchorPane>

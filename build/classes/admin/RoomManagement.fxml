@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="admin.RoomManagementController">
+    <children>
+        <ToolBar layoutX="-1.0" layoutY="44.0" prefHeight="40.0" prefWidth="800.0">
+            <items>
+                <Button mnemonicParsing="false" onMouseClicked="#profileOnMouseClicked" text="Profile" />
+                <Button mnemonicParsing="false" onMouseClicked="#userManagementOnMouseClicked" text="User Management" />
+                <Button fx:id="roomButton" mnemonicParsing="false" text="Room Management" />
+                <Button mnemonicParsing="false" onMouseClicked="#bookingManagementOnMouseClicked" text="Booking Management" />
+            </items>
+            <stylesheets>
+                <URL value="@../resources/style.css" />
+            </stylesheets>
+        </ToolBar>
+        <ImageView id="exitButton" fx:id="logOutButton" fitHeight="29.75" fitWidth="34.0" layoutX="752.0" layoutY="9.0" onMouseClicked="#logOutMouseClicked" opacity="0.75" pickOnBounds="true" preserveRatio="true" styleClass="button">
+            <effect>
+                <DropShadow color="WHITE" spread="0.5" />
+            </effect>
+            <image>
+                <Image preserveRatio="false" smooth="false" url="@../resources/logout.png" />
+            </image>
+        </ImageView>
+        <Label alignment="CENTER" graphicTextGap="5.0" layoutX="21.0" layoutY="14.0" text="A d m i n  M a n a g e m e n t" underline="true">
+            <effect>
+                <DropShadow color="#51aa00" spread="0.7" />
+            </effect>
+            <font>
+                <Font name="Times New Roman Bold" size="16.0" />
+            </font>
+        </Label>
+        <Label fx:id="userLoggedInDetailsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="320.0" layoutY="16.0" mouseTransparent="true" prefWidth="415.0" textAlignment="RIGHT">
+            <font>
+                <Font name="Verdana" size="14.0" />
+            </font>
+        </Label>
+        <Label id="statusLabel" fx:id="statusLabel" alignment="TOP_CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="543.0" prefHeight="52.0" prefWidth="617.0" textAlignment="CENTER" textFill="$x2" textOverrun="CLIP" wrapText="true">
+            <effect>
+                <DropShadow color="WHITE" spread="0.9" />
+            </effect>
+            <font>
+                <Font name="System Bold Italic" size="20.0" />
+            </font>
+        </Label>
+        <TabPane fx:id="roomTabPane" layoutX="-1.0" layoutY="84.0" prefHeight="451.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+            <tabs>
+                <Tab text="New Room Registration">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="registerButton" blendMode="SRC_ATOP" contentDisplay="CENTER" layoutX="250.0" layoutY="371.0" mnemonicParsing="false" onKeyPressed="#registerEnterPressed" onMouseClicked="#registerMouseClicked" opacity="0.75" prefHeight="44.0" prefWidth="300.0" text="R E G I S T E R      R O O M" textAlignment="CENTER" underline="true" wrapText="true">
+                                    <effect>
+                                        <DropShadow spread="0.7">
+                                            <color>
+                                                <Color blue="0.000" green="0.667" red="0.318" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                    <font>
+                                        <Font name="System Bold" size="20.0" fx:id="x4" />
+                                    </font>
+                                </Button>
+                                <VBox layoutX="250.0" layoutY="50.0" prefHeight="284.0" prefWidth="335.0">
+                                    <children>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Room Name:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField id="userName" fx:id="roomNameTextField" onKeyReleased="#roomNameKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="190.0" promptText="Room Name (max 15 characters)">
+                                                    <effect>
+                                                        <DropShadow spread="0.7">
+                                                            <color>
+                                                                <Color blue="0.000" green="0.000" red="0.800" fx:id="x2" />
+                                                            </color>
+                                                        </DropShadow>
+                                                    </effect>
+                                                    <HBox.margin>
+                                                        <Insets left="30.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Seats:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField id="altEmail" fx:id="sitsTextField" onKeyReleased="#sitsKeyReleased" opacity="0.6" prefHeight="30.0" prefWidth="226.0" promptText="Number of seats (min 1 &amp; max 150)">
+                                                    <effect>
+                                                        <DropShadow color="$x2" spread="0.7" />
+                                                    </effect>
+                                                    <HBox.margin>
+                                                        <Insets left="45.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Board:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="boardCheckBox" mnemonicParsing="false" onMouseReleased="#boardCheckBoxMouseReleased">
+                                                    <HBox.margin>
+                                                        <Insets left="42.0" />
+                                                    </HBox.margin>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                </CheckBox>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="TV:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="50.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="tvCheckBox" mnemonicParsing="false" onMouseReleased="#tvCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="55.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Projector:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="projectorCheckBox" mnemonicParsing="false" onMouseReleased="#projectorCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="20.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Available:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="50.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="availableCheckBox" mnemonicParsing="false" onMouseReleased="#availableCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab onSelectionChanged="#managementSelectionChanged" text="Room Management">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <TableView fx:id="roomTableView" layoutX="3.0" opacity="0.93" prefHeight="418.0" prefWidth="792.0">
+                                    <columns>
+                                        <TableColumn fx:id="roomNameTableColumn" maxWidth="206.0" minWidth="120.0" prefWidth="206.0" text="Room Name" />
+                                        <TableColumn fx:id="sitsTableColumn" maxWidth="222.0" minWidth="43.0" prefWidth="111.0" text="No. of seats" />
+                                        <TableColumn fx:id="boardTableColumn" maxWidth="420.0" minWidth="72.0" prefWidth="112.0" text="Board" />
+                                        <TableColumn fx:id="tvTableColumn" minWidth="55.0" prefWidth="115.0" text="TV" />
+                                        <TableColumn fx:id="projectorTableColumn" maxWidth="327.0" minWidth="0.0" prefWidth="122.0" resizable="false" text="Projector" />
+                                        <TableColumn fx:id="availableTableColumn" maxWidth="127.0" minWidth="50.0" prefWidth="125.0" resizable="false" text="Available" />
+                                    </columns>
+                                    <contextMenu>
+                                        <ContextMenu>
+                                            <items>
+                                                <MenuItem fx:id="updateMenuItem" mnemonicParsing="false" onAction="#updateMenueItemOnAction" text="Update / Change room features" />
+                                            </items>
+                                        </ContextMenu>
+                                    </contextMenu>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab fx:id="updateRoomTab" disable="true" onClosed="#updateRoomOnClose" onSelectionChanged="#updateRoomTabOnSelectionChanged" text="Update Room Features">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button blendMode="SRC_ATOP" contentDisplay="CENTER" layoutX="250.0" layoutY="371.0" mnemonicParsing="false" onKeyPressed="#updateRoomEnterPressed" onMouseClicked="#updateRoomMouseClicked" opacity="0.75" prefHeight="44.0" prefWidth="300.0" text="U P D A T E      R O O M" textAlignment="CENTER" underline="true" wrapText="true">
+                                    <effect>
+                                        <DropShadow spread="0.7">
+                                            <color>
+                                                <Color blue="0.000" green="0.667" red="0.318" />
+                                            </color>
+                                        </DropShadow>
+                                    </effect>
+                                    <font>
+                                        <Font name="System Bold" size="20.0" fx:id="x41" />
+                                    </font>
+                                </Button>
+                                <VBox layoutX="250.0" layoutY="50.0" prefHeight="284.0" prefWidth="335.0">
+                                    <children>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Room Name:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField id="userName" fx:id="updateRoomNameTextField" onKeyReleased="#roomNameKeyReleasedUpdate" opacity="0.6" prefHeight="30.0" prefWidth="190.0" promptText="Room Name (max 15 characters)">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <HBox.margin>
+                                                        <Insets left="30.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Seats:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                </Label>
+                                                <TextField fx:id="updateSitsTextField" onKeyReleased="#sitsKeyReleasedUpdate" opacity="0.6" prefHeight="30.0" prefWidth="226.0" promptText="Number of seats (min 1 &amp; max 150)">
+                                                    <effect>
+                                                        <DropShadow color="51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <HBox.margin>
+                                                        <Insets left="45.0" />
+                                                    </HBox.margin>
+                                                </TextField>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Board:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="updateBoardCheckBox" mnemonicParsing="false" onMouseReleased="#boardCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="42.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="TV:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="50.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="updateTvCheckBox" mnemonicParsing="false" onMouseReleased="#tvCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="55.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                        <HBox prefHeight="100.0" prefWidth="200.0">
+                                            <children>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Projector:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="updateProjectorCheckBox" mnemonicParsing="false" onMouseReleased="#projectorCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="20.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                                <Label alignment="CENTER" graphicTextGap="5.0" text="Available:" underline="true">
+                                                    <effect>
+                                                        <DropShadow color="#51aa00" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font name="Times New Roman Bold" size="16.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="50.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </Label>
+                                                <CheckBox fx:id="updateAvailableCheckBox" mnemonicParsing="false" onMouseReleased="#availableCheckBoxMouseReleased">
+                                                    <effect>
+                                                        <DropShadow color="#FFF8DC" spread="0.7" />
+                                                    </effect>
+                                                    <font>
+                                                        <Font size="20.0" />
+                                                    </font>
+                                                    <HBox.margin>
+                                                        <Insets left="15.0" top="5.0" />
+                                                    </HBox.margin>
+                                                </CheckBox>
+                                            </children>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </children>
+    <stylesheets>
+        <URL value="@../resources/style.css" />
+    </stylesheets>
+</AnchorPane>
